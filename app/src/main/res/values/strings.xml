@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WhatsKiller</string>
+    <string name="description">
+        Please turn this On because this app needs the following permission in order to work properly.
+        \n
+        \n• Perform gestures : To perform automated click gestures.
+        \n
+        \n
+        Please be assured that WhatsKiller will not collect any personal informations.
+        \n
+        \n
+        - z1nc0r3 developer -
+    </string>
+</resources>
