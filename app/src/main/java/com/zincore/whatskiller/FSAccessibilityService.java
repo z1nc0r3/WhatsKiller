@@ -65,19 +65,23 @@ public class FSAccessibilityService extends AccessibilityService {
     }
 
     private void performClickButtonByText(AccessibilityNodeInfo source, String text) {
-        List<AccessibilityNodeInfo> forceStopNodes = source.findAccessibilityNodeInfosByText(text);
-        if (forceStopNodes != null && !forceStopNodes.isEmpty()) {
-            for (int i = 0; i < forceStopNodes.size(); i++) {
-                AccessibilityNodeInfo node = forceStopNodes.get(i);
-                if (node == null) {
-                    continue;
-                }
-                if (ANDROID_WIDGET_BUTTON.contentEquals(node.getClassName())) {
-                    if (node.isEnabled()) {
-                        node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+        try {
+            List<AccessibilityNodeInfo> forceStopNodes = source.findAccessibilityNodeInfosByText(text);
+            if (forceStopNodes != null && !forceStopNodes.isEmpty()) {
+                for (int i = 0; i < forceStopNodes.size(); i++) {
+                    AccessibilityNodeInfo node = forceStopNodes.get(i);
+                    if (node == null) {
+                        continue;
+                    }
+                    if (ANDROID_WIDGET_BUTTON.contentEquals(node.getClassName())) {
+                        if (node.isEnabled()) {
+                            node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
                     }
                 }
             }
+        } catch (Exception e) {
+            return;
         }
     }
 
