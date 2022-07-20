@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements FSAccessibilitySe
             Toast.makeText(this, "Whatsapp not installed.", Toast.LENGTH_SHORT).show();
             finishAndRemoveTask();
         } else {
+            Toast.makeText(this, "Please turn on accessibility service for WhatsKiller app.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
             startActivity(intent);
             finishAfterTransition();
