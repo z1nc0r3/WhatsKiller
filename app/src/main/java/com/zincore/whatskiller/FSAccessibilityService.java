@@ -6,6 +6,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Objects;
 
 public class FSAccessibilityService extends AccessibilityService {
     private static final String ANDROID_WIDGET_BUTTON = "android.widget.Button";
@@ -61,7 +62,7 @@ public class FSAccessibilityService extends AccessibilityService {
         performClickButtonByText(source, "OK");
 
         if (checkButtonStatus(source))
-            getClient().onAppStopped();
+            Objects.requireNonNull(getClient()).onAppStopped();
     }
 
     private void performClickButtonByText(AccessibilityNodeInfo source, String text) {
@@ -80,8 +81,7 @@ public class FSAccessibilityService extends AccessibilityService {
                     }
                 }
             }
-        } catch (Exception e) {
-            return;
+        } catch (Exception ignored) {
         }
     }
 
